@@ -29,7 +29,7 @@ public class CustomerController {
 
 
     // Handle user request
-    @GetMapping
+    @GetMapping // return เป็น string
     public String getCustomerPage(Model model) {
 
         // Step 1 : Update model for template
