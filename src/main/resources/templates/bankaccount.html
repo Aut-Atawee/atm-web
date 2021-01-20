@@ -8,7 +8,8 @@
 
 
     <h1>Open Bank Account</h1>
-    <form th:action="@{/bankaccount}" method="POST">
+    <form
+            th:action="@{/bankaccount}" method="POST">
 
 <!--        <div class="form-group">-->
 <!--            <label for="inputId">Id</label>-->
@@ -58,6 +59,15 @@
             <td th:text="${account.balance}"></td>
             <td>
                 <a class="btn btn-primary" th:href="@{/bankaccount/edit/{id}(id=${account.id})}">Edit</a>
+
+<!--                <a class="btn btn-danger" th:action="@{/bankaccount/delete/{id}(id=${account.id})}" methods="POST">Delete</a>-->
+
+                <form th:action="@{/bankaccount/delete/{id}(id=${account.id})}" method="POST">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+
+
+
             </td>
         </tr>
 
