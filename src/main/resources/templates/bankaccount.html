@@ -38,23 +38,27 @@
 
     <h1>All Bank Accounts</h1>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped">
         <thead class="thead-light">
         <tr>
             <th>Id</th>
             <th>CustomerId</th>
             <th>Type</th>
             <th>Balance</th>
+            <th>Actions</th>
         </tr>
         </thead>
 
         <tbody>
 
-        <tr th:each="bankaccount : ${bankaccounts}">
-            <td th:text="${bankaccount.id}"></td>
-            <td th:text="${bankaccount.customerId}"></td>
-            <td th:text="${bankaccount.type}"></td>
-            <td th:text="${bankaccount.balance}"></td>
+        <tr th:each="account : ${bankaccounts}">
+            <td th:text="${account.id}"></td>
+            <td th:text="${account.customerId}"></td>
+            <td th:text="${account.type}"></td>
+            <td th:text="${account.balance}"></td>
+            <td>
+                <a class="btn btn-primary" th:href="@{/bankaccount/edit/{id}(id=${account.id})}">Edit</a>
+            </td>
         </tr>
 
         </tbody>
