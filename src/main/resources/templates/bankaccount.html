@@ -4,76 +4,165 @@
       xmlns:th="https://www.thymeleaf.org">
 
 
-<div clas="container" layout:fragment="content">
+<div layout:fragment="content">
+    <div class="container">
+
+        <h1>Open Bank Account</h1>
+        <form
+                th:action="@{/bankaccount}" method="POST">
+
+            <div class="form-group">
+                <label for="inputCustomer">Customer Id</label>
+                <input type="text" class="form-control" name="customerId" id="inputCustomer">
+            </div>
+
+            <div class="form-group">
+                <label for="inputType">Type</label>
+                <input type="text" class="form-control" name="type" id="inputType">
+            </div>
+
+            <div class="form-group">
+                <label for="inputBalance">Balance</label>
+                <input type="text" class="form-control" name="balance" id="inputBalance">
+            </div>
+
+            <div class="form-group" style="display: flex;justify-content: center;align-items: center;margin-top:20px">
+                <input type="submit" class="btn btn-primary">
+            </div>
+        </form>
+        <hr>
+
+        <h1 style="margin-top:25px;margin-bottom: 25px;">All Bank Accounts</h1>
+
+        <table class="table table-bordered table-striped">
+            <thead class="thead-light">
+            <tr>
+                <th style="text-align: center;">Id</th>
+                <th style="text-align: center;">CustomerId</th>
+                <th style="text-align: center;">Type</th>
+                <th style="text-align: center;">Balance</th>
+                <th style="text-align: center;">Actions</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr th:each="account : ${bankaccounts}">
+                <td style="text-align: center;" th:text="${account.id}"></td>
+                <td style="text-align: center;" th:text="${account.customerId}"></td>
+                <td style="text-align: center;" th:text="${account.type}"></td>
+                <td style="text-align: center;" th:text="${account.balance}"></td>
+                <td>
+                    <div class="w3-show-inline-block">
+
+                        <div class="w3-bar" style="display: flex;justify-content: center;align-items: center;">
+                            <a style="width: 70px;margin-right:15px"class="btn btn-primary" th:href="@{/bankaccount/edit/{id}(id=${account.id})}">Edit</a>
+                            <form th:action="@{/bankaccount/delete/{id}(id=${account.id})}" method="POST">
+                                <button id="delete"type="submit" class="btn btn-danger">Delete</button>
+                            </form>
 
 
-    <h1>Open Bank Account</h1>
-    <form
-            th:action="@{/bankaccount}" method="POST">
+                        </div>
+                        </form>
+                    </div>
 
-<!--        <div class="form-group">-->
-<!--            <label for="inputId">Id</label>-->
-<!--            <input type="input" class="form-control" name="id" id="inputId">-->
-<!--        </div>-->
 
-        <div class="form-group">
-            <label for="inputCustomer">Customer Id</label>
-            <input type="text" class="form-control" name="customerId" id="inputCustomer">
-        </div>
+                    <!-- <form th:href="@{/bankaccount/edit/{id}(id=${account.id})}">
+                        <button type="submit" class="btn btn-danger">Edit</button>
+                    </form> -->
+                    <!-- <a class="btn btn-primary" th:href="@{/bankaccount/edit/{id}(id=${account.id})}">Edit</a> -->
 
-        <div class="form-group">
-            <label for="inputType">Type</label>
-            <input type="text" class="form-control" name="type" id="inputType">
-        </div>
+                    <!-- <a class="btn btn-danger" th:action="@{/bankaccount/delete/{id}(id=${account.id})}" methods="POST">Delete</a>
 
-        <div class="form-group">
-            <label for="inputBalance">Balance</label>
-            <input type="text" class="form-control" name="balance" id="inputBalance">
-        </div>
-
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary">
-        </div>
-    </form>
-    <hr>
-
-    <h1>All Bank Accounts</h1>
-
-    <table class="table table-bordered table-striped">
-        <thead class="thead-light">
-        <tr>
-            <th>Id</th>
-            <th>CustomerId</th>
-            <th>Type</th>
-            <th>Balance</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-
-        <tbody>
-
-        <tr th:each="account : ${bankaccounts}">
-            <td th:text="${account.id}"></td>
-            <td th:text="${account.customerId}"></td>
-            <td th:text="${account.type}"></td>
-            <td th:text="${account.balance}"></td>
-            <td>
-                <a class="btn btn-primary" th:href="@{/bankaccount/edit/{id}(id=${account.id})}">Edit</a>
-
-<!--                <a class="btn btn-danger" th:action="@{/bankaccount/delete/{id}(id=${account.id})}" methods="POST">Delete</a>-->
-
-                <form th:action="@{/bankaccount/delete/{id}(id=${account.id})}" method="POST">
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
+                     <form th:action="@{/bankaccount/delete/{id}(id=${account.id})}" method="POST">
+                         <button type="submit" class="btn btn-danger">Delete</button>
+                     </form> -->
 
 
 
-            </td>
-        </tr>
 
-        </tbody>
 
-    </table>
+                </td>
+            </tr>
 
+            </tbody>
+
+        </table>
+    </div>
 
 </div>
+
+
+
+
+<!--<div layout:fragment="content">-->
+<!--    <div class="container">-->
+
+
+<!--    <h1>Open Bank Account</h1>-->
+<!--    <form-->
+<!--            th:action="@{/bankaccount}" method="POST">-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="inputCustomer">Customer Id</label>-->
+<!--            <input type="text" class="form-control" name="customerId" id="inputCustomer">-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="inputType">Type</label>-->
+<!--            <input type="text" class="form-control" name="type" id="inputType">-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="inputBalance">Balance</label>-->
+<!--            <input type="text" class="form-control" name="balance" id="inputBalance">-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <input type="submit" class="btn btn-primary">-->
+<!--        </div>-->
+<!--    </form>-->
+<!--    <hr>-->
+
+<!--    <h1>All Bank Accounts</h1>-->
+
+<!--    <table class="table table-bordered table-striped">-->
+<!--        <thead class="thead-light">-->
+<!--        <tr>-->
+<!--            <th>Id</th>-->
+<!--            <th>CustomerId</th>-->
+<!--            <th>Type</th>-->
+<!--            <th>Balance</th>-->
+<!--            <th>Actions</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+
+<!--        <tbody>-->
+
+<!--        <tr th:each="account : ${bankaccounts}">-->
+<!--            <td th:text="${account.id}"></td>-->
+<!--            <td th:text="${account.customerId}"></td>-->
+<!--            <td th:text="${account.type}"></td>-->
+<!--            <td th:text="${account.balance}"></td>-->
+<!--            <td>-->
+<!--                <span>-->
+<!--                <a class="btn btn-primary" th:href="@{/bankaccount/edit/{id}(id=${account.id})}">Edit</a>-->
+<!--                </span>-->
+<!--                <span>-->
+<!--                <form th:action="@{/bankaccount/delete/{id}(id=${account.id})}" method="POST">-->
+<!--                    <button type="submit" class="btn btn-danger">Delete</button>-->
+<!--                </form>-->
+<!--                </span>-->
+
+
+
+<!--            </td>-->
+<!--        </tr>-->
+
+<!--        </tbody>-->
+
+<!--    </table>-->
+
+<!--    </div>-->
+
+<!--</div>-->

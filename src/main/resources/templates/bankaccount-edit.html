@@ -3,9 +3,11 @@
       layout:decorate="~{fragments/main_layout}"
       xmlns:th="https://www.thymeleaf.org">
 
-<div class="container" layout:fragment="content">
+<div layout:fragment="content">
+    <div class="container">
 
     <h1>Edit Bank Account</h1>
+
     <form
         th:action="@{/bankaccount/edit/{id}(id=${bankAccount.id})}"
         th:object="${bankAccount}"
@@ -26,15 +28,29 @@
             <input disabled type="text" th:field="*{type}" class="form-control" id="inputType">
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="margin-bottom:30px;">
             <label for="inputBalance">Balance</label>
-            <input type="text" th:field="*{balance}" class="form-control" id="inputBalance">
+            <input disabled type="text" th:field="*{balance}" class="form-control" id="inputBalance">
         </div>
 
-        <div class="form-group">
+
+        Transaction :
+        <select name="transaction">
+            <option value="deposit">Deposit</option>
+            <option value="withdraw">Withdraw</option>
+        </select>
+
+
+        <div class="form-group" style="margin-top:20px;">
+            <label for="inputAmount">Amount</label>
+            <input type="text" class="form-control" name="inputAmount" id="inputAmount">
+        </div>
+
+        <div class="form-group" style="display: flex;justify-content: center;align-items: center;margin-top:25px">
             <input type="submit" class="btn btn-primary">
         </div>
 
     </form>
+    </div>
 
 </div>

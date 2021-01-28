@@ -55,37 +55,13 @@ public class BankAccountService {
 
     public void editBankAccount(BankAccount bankAccount) {
         String url = "http://localhost:8091/api/bankaccount/" + bankAccount.getId() ;
-
         restTemplate.put(url, bankAccount) ;
     }
+
 
     public void deleteBankAccount(BankAccount bankAccount) {
         String url = "http://localhost:8091/api/bankaccount/" + bankAccount.getId() ;
 
         restTemplate.delete(url, bankAccount) ;
     }
-
-    //    public List<BankAccount> getBankAccount() {
-//        return new ArrayList<>(this.bankAccountList) ;
-//    }
-
-//    public void createBankAccount(BankAccount bankAccount) {
-//        bankAccountList.add(bankAccount) ;
-//    }
-//
-//    public BankAccount findBankAccount(int id) {
-//        for (BankAccount bankAccount : bankAccountList) {
-//            if (bankAccount.getId() == id) {
-//                return bankAccount ;
-//            }
-//        } return null ;
-//    }
-//
-//    public BankAccount checkId(BankAccount inputBankAccount) {
-//        BankAccount storedBankAccount = findBankAccount(inputBankAccount.getId()) ;
-//
-//        if (storedBankAccount != null) {
-//            return storedBankAccount ;
-//        } return null ;
-//    }
 }

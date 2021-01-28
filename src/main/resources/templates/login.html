@@ -4,23 +4,29 @@
       xmlns:th="https://www.thymeleaf.org">
 
 <div layout:fragment="content" class="container">
-    <h1>Login</h1>
+    <h1 style="text-align:center;margin-top:30px;margin-bottom:30px;">Login</h1>
+    <div style="display: flex; justify-content: center; align-items: center;">
 
-    <form th:action="@{/login}" method="POST">
-        <div class="form-group">
-            <label for="inputId">Id</label>
-            <input type="input" name="id" class="form-group" id="inputId">
-        </div>
 
-        <div class="form-group">
-            <label for="inputPin">Pin</label>
-            <input type="password" name="pin" class="form-group" id="inputPin">
-        </div>
 
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary">
-        </div>
+        <form th:action="@{/login}" method="POST">
+            <div class="form-group">
+                <label for="inputId">Id</label>
+                <input type="input" name="id" class="form-group" id="inputId">
+            </div>
 
-    </form>
+            <div class="form-group">
+                <label for="inputPin">Pin</label>
+                <input type="password" name="pin" class="form-group" id="inputPin">
+            </div>
+
+            <div class="form-group" style="display: flex; justify-content: center; align-items: center;">
+                <input type="submit" class="btn btn-primary">
+            </div>
+
+        </form>
+    </div>
+
 
 </div>
+</html>
